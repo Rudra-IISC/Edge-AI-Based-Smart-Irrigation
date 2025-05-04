@@ -110,7 +110,6 @@ MQTT_CLIENT_ID  = b"pico_w_eto_predictor_v7_mqtt_log_only" # Unique ID
 TOPIC_SOIL_SUB  = b"esp32/soilMoisture"
 TOPIC_PUMP_CMD  = b"esp32/pump/control"
 TOPIC_LOG_PUB   = b"RPi/Pico/Log" # Topic for publishing logs
-TOPIC_PUMP_REMAINING_TIME_PUB=b"RPi/Pico/PumpRemainingTime"
 
 # Config topics (unchanged)
 TOPIC_CONFIG_BASE = "User/Input/"; TOPIC_CONFIG_CROP = TOPIC_CONFIG_BASE + "Crop"
@@ -498,27 +497,7 @@ while True:
         log_message(f"Pump: {pump_state_str} (Target: {format_value(current_pump_run_duration,1,'s')}){remaining_time_str}", level="STATUS"); log_message(f"MQTT: {'Connected' if client else 'Disconnected'}", level="STATUS"); log_message("------------------------", level="STATUS")
         last_status_print_time = time.time()
 
-    # --- >>> ADDED: Publish Remaining Pump Time Periodically <<< ---
-    remaining_time = 0.0 # Default to 0 if pump is off
-    if pump_running:
-        # Calculate elapsed time since pump was commanded ON
-        elapsed_time = time.time() - pump_start_time
-        # Calculate remaining time, ensuring it's not negative
-        remaining_time = max(0.0, current_pump_run_duration - elapsed_time)
-
-    # Format remaining time as string with 1 decimal place
-    remaining_time_str = f"{remaining_time:.1f}"
-    # Publish the remaining time (will publish "0.0" if pump is off)
-    publish_message(client, TOPIC_PUMP_REMAINING_TIME_PUB, remaining_time_str)
-    # --- End of Addition ---
-
-
-    # --- Wait Before Next Cycle ---
-    wait_interval = 30;
-    # log_message(f"Sleeping for {wait_interval} seconds...", level="DEBUG") # Optional debug log
-    time.sleep(wait_interval);
-    gc.collect()
-    # log_message(f"Free Memory: {gc.mem_free()} bytes", level="DEBUG") # Optional debug log
-
+    # Wait Before Next Cycle
+    wait_interval = 30; time.sleep(wait_interval); gc.collect()
 
 # [End of file]
