@@ -120,6 +120,12 @@ The folder contains:
 * [Add any other key files]
 
 Further development of the AR application could include interactive controls and user customization of visualizations.
+## Conclusion
+
+This project demonstrates a complete Edge AI solution for precision irrigation in nursery crops. By leveraging long-term climate data and an on-device MLP model, the system accurately predicts crop water needs (ETc) in real-time. The integration of crop coefficients (e.g., onion $K_c$) and soil moisture feedback ensures that watering is neither excessive nor insufficient at any stage. In trials, the Pico W's MLP inference achieved approximately 97% accuracy ($R^2 \approx 0.97$) against FAO-56 benchmarks, validating the approach. The edge deployment (MLP code in MicroPython) is lightweight and runs without cloud dependency. Hardware such as the ESP32 pump controller and moisture sensors have been successfully combined with the AI model into a functional prototype.
+
+Moving forward, the system can be extended with a user interface (LCD or app) for monitoring, additional sensors (e.g., temperature probes), or ensemble models for other crops. The modular software and complete documentation on GitHub make it straightforward for technical teams to replicate or customize the system. Overall, this work provides a blueprint for water-efficient, smart irrigation solutions that marry domain knowledge (FAO ET₀, $K_c$) with modern edge AI techniques.
+Furthermore, an accompanying **Augmented Reality (AR) application** provides an intuitive user interface for visualizing sensor data, manually controlling the pump, and accessing system status, enhancing the overall user experience. Future work could focus on expanding the capabilities of this AR app for more interactive control and data insights.
 
 ## Contributing
 
@@ -130,33 +136,16 @@ We welcome contributions to the Edge AI-Based Smart Irrigation System project! I
 1.  **Fork the Repository:** Start by forking the repository to your own GitHub account. This creates a copy of the project that you can freely modify.
 
 2.  **Create a Branch:** Before making any changes, create a new branch from the `main` branch. Choose a descriptive name for your branch that indicates the feature or fix you're working on (e.g., `feature/new-sensor-integration`, `bugfix/mqtt-connection-issue`).
-
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
-
 3.  **Make Your Changes:** Implement your changes, ensuring that your code is well-documented and follows any existing code style conventions in the project.
 
 4.  **Test Your Changes:** Thoroughly test your code to ensure that it works as expected and doesn't introduce any new issues. If you're adding a new feature, include relevant unit or integration tests.
 
 5.  **Commit Your Changes:** Commit your changes with clear and concise commit messages. Follow conventional commit message formats if possible (e.g., `feat: Add support for XYZ sensor`, `fix: Resolve MQTT connection error`).
 
-    ```bash
-    git add .
-    git commit -m "feat: Add support for XYZ sensor"
-    ```
-
 6.  **Push to Your Fork:** Push your local branch to your forked repository on GitHub.
-
-    ```bash
-    git push origin feature/your-feature-name
-    ```
 
 7.  **Create a Pull Request:** Once your changes are pushed to your fork, create a pull request (PR) to the `main` branch of the original repository.
 
-    * Provide a clear and descriptive title for your pull request.
-    * In the PR description, explain the changes you've made, the problem you're solving (if it's a bug fix), and any relevant context or testing information.
-    * Reference any related issues in your pull request description (e.g., `Fixes #123`).
 
 ### Contribution Guidelines
 
@@ -181,8 +170,4 @@ We appreciate your interest in contributing to this project and look forward to 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Conclusion
 
-This project demonstrates a complete Edge AI solution for precision irrigation in nursery crops. By leveraging long-term climate data and an on-device MLP model, the system accurately predicts crop water needs (ETc) in real-time. The integration of crop coefficients (e.g., onion $K_c$) and soil moisture feedback ensures that watering is neither excessive nor insufficient at any stage. In trials, the Pico W's MLP inference achieved approximately 97% accuracy ($R^2 \approx 0.97$) against FAO-56 benchmarks, validating the approach. The edge deployment (MLP code in MicroPython) is lightweight and runs without cloud dependency. Hardware such as the ESP32 pump controller and moisture sensors have been successfully combined with the AI model into a functional prototype.
-
-Moving forward, the system can be extended with a user interface (LCD or app) for monitoring, additional sensors (e.g., temperature probes), or ensemble models for other crops. The modular software and complete documentation on GitHub make it straightforward for technical teams to replicate or customize the system. Overall, this work provides a blueprint for water-efficient, smart irrigation solutions that marry domain knowledge (FAO ET₀, $K_c$) with modern edge AI techniques.
