@@ -176,6 +176,16 @@ Moving forward, the system can be extended with a user interface (LCD or app) fo
 
 Furthermore, an accompanying **Augmented Reality (AR) application** provides an intuitive user interface for visualizing sensor data, manually controlling the pump, and accessing system status, enhancing the overall user experience. Future work could focus on expanding the capabilities of this AR app for more interactive control and data insights.
 
+## Team Members
+
+* Maharudra, DM, [maharudrar@iisc.ac.in](mailto:maharudrar@iisc.ac.in)
+    * Contributions: Hardware Integration, Connection of Edge device and Edge Gateway with MQTT, Pump Control : Node Red Dashboard and Flow (Local) , and Augmented Reality App Deployment (Remote).
+* Nikhil N S, DM, [nikhilns@iisc.ac.in](mailto:nikhilns@iisc.ac.in)
+    * Contributions: Literature and previous innovation study. Data collection data processing objective and domin information gathering collection.
+* Surya Tomar, DM, [suryatomar@iisc.ac.in](mailto:suryatomar@iisc.ac.in)
+    * Contributions: Real time data fetching via APIs , model development and model integration in edge devices and model deployment.
+
+
 ## Contributing
 
 We welcome contributions to the Edge AI-Based Smart Irrigation System project! If you're interested in helping out, please follow these guidelines:
