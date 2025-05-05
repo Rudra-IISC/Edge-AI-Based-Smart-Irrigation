@@ -100,27 +100,27 @@ This section describes how to set up and use the Edge AI-Based Smart Irrigation 
 
 The water pump can be controlled through three different interfaces:
 
-1.  **Manual On/Off via Node-RED Dashboard:**
-    * Access the Node-RED dashboard that you have configured for this project.
-    * On the dashboard, you will find controls (e.g., buttons or switches) to manually turn the water pump ON and OFF.
-    * Use these controls as needed for manual irrigation.
-  
-![Node Red Flow](Data/Flow_Node.png)
-
-2.  **Manual On/Off by AR App:**
-    * Launch the Augmented Reality (AR) application on your mobile device.
-    * Navigate to the pump control interface within the AR app.
-    * The app will provide buttons or interactive elements that allow you to manually turn the water pump ON and OFF by interacting with the augmented view of your system.
-  
-      ![AR Pump Control](Data/AR_Pump_Control.png)
-
-3.  **Automatic Control by Edge AI Model:**
+1. **Automatic Control by Edge AI Model:**
     * The system will automatically control the water pump based on the predictions of the Edge AI-based irrigation model running on the Raspberry Pi Pico W.
     * The model takes into account real-time soil moisture levels from the sensors and relevant weather data.
     * Based on the predicted crop water needs (ETc) and the current soil moisture, the Pico W will send MQTT commands to the ESP32 to turn the pump ON or OFF for a calculated duration to maintain optimal soil moisture levels.
     * The system operates autonomously once the initial setup is complete and the automatic mode is active.
   
-   ![Node Red Dashboard 2](Data/Node_red_GUI.png)
+      ![Node Red Dashboard 2](Data/Node_red_GUI.png)
+
+2. **Manual On/Off by AR App:**
+    * Launch the Augmented Reality (AR) application on your mobile device.
+    * Navigate to the pump control interface within the AR app.
+    * The app will provide buttons or interactive elements that allow you to manually turn the water pump ON and OFF by interacting with the augmented view of your system.
+  
+      ![AR Pump Control](Data/AR_Pump_Control.png)
+      
+3.  **Manual On/Off via Node-RED Dashboard:**
+    * Access the Node-RED dashboard that you have configured for this project.
+    * On the dashboard, you will find controls (e.g., buttons or switches) to manually turn the water pump ON and OFF.
+    * Use these controls as needed for manual irrigation.
+  
+      ![Node Red Flow](Data/Flow_Node.png)
 
 Ensure all components are powered correctly and the software is running as expected for each control interface to function properly. Monitor the system's behavior during initial testing to verify the correct operation of the sensors, pump control, and the AI-driven automation.
 
