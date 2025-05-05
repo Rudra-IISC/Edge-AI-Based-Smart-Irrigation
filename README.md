@@ -43,6 +43,20 @@ The software components and tools used in this project are as follows:
 | umqtt.simple         | Pico W / ESP32 | Lightweight MQTT client library used for communication between the Pico W and the ESP32.                                      | (MicroPython library)                                         |
 | Jupyter Notebooks/Script | PC       | Development and execution of Python code for data processing, model training, and potentially model export/deployment scripts.        | Jupyter (environment), Python scripts (custom development) |
 
+## Augmented Reality Based Smart Irrigation
+
+This project incorporates an augmented reality (AR) application to enhance user interaction and understanding of the smart irrigation system. The AR app allows users to visualize sensor data overlaid on the physical system, get real-time moisture readings by pointing their device, control the water pump , access system status and alerts.
+
+You can access the files and resources for the AR application in the following Google Drive folder:
+
+[AR App Resources](https://drive.google.com/drive/folders/1TpJTIjEVfzm5t6Ri8KKJVAxK5ShAxkX6?usp=drive_link)
+
+The folder contains:
+
+* [ AR app APK (for Android), Unity AR App Source, Documentation, etc.]
+
+Further development of the AR application could include [interactive controls, user customization of visualizations].
+
 ## Contributing
 
 [Guidelines for potential contributors]
@@ -56,3 +70,13 @@ The software components and tools used in this project are as follows:
 This project demonstrates a complete Edge AI solution for precision irrigation in nursery crops. By leveraging long-term climate data and an on-device MLP model, the system accurately predicts crop water needs (ETc) in real-time. The integration of crop coefficients (e.g., onion $K_c$) and soil moisture feedback ensures that watering is neither excessive nor insufficient at any stage. In trials, the Pico W's MLP inference achieved approximately 97% accuracy ($R^2 \approx 0.97$) against FAO-56 benchmarks, validating the approach. The edge deployment (MLP code in MicroPython) is lightweight and runs without cloud dependency. Hardware such as the ESP32 pump controller and moisture sensors have been successfully combined with the AI model into a functional prototype.
 
 Moving forward, the system can be extended with a user interface (LCD or app) for monitoring, additional sensors (e.g., temperature probes), or ensemble models for other crops. The modular software and complete documentation on GitHub make it straightforward for technical teams to replicate or customize the system. Overall, this work provides a blueprint for water-efficient, smart irrigation solutions that marry domain knowledge (FAO ET₀, $K_c$) with modern edge AI techniques.
+
+## Additional Materials
+
+This project includes an augmented reality (AR) application for [briefly describe the AR app's purpose, e.g., visualizing the irrigation system, providing real-time data overlays]. You can find the related files and resources in the following Google Drive folder:
+
+[AR App Resources](https://drive.google.com/drive/folders/1TpJTIjEVfzm5t6Ri8KKJVAxK5ShAxkX6?usp=drive_link)
+
+The folder contains:
+
+* [List the key files/resources in the Google Drive folder, e.g., AR app APK, source code, documentation, etc.]
