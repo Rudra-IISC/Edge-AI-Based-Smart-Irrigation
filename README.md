@@ -11,8 +11,8 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 | Raspberry Pi Pico W  | Hosts the MLP model and decision logic; reads sensors; computes irrigation volume. | RP2040 dual-core 133MHz MCU, 264 KB RAM, Integrated Wi-Fi module             |
 | ESP32                | Receives MQTT commands from Pico; drives the pump relay for irrigation.      | Dual-core 240MHz MCU with Wi-Fi/Bluetooth                                    |
 | Soil Moisture Sensor (Analog) | Measures volumetric water content (VWC); provides real-time soil moisture input. | Analog output providing VWC readings                                         |
-| Relay Module         | Switches power to the water pump under ESP32 control.                      | 5V or 12V signal-controlled relay board                                     |
-| Water Pump           | Physically delivers water to the crop.                                      | 12V DC submersible or inline pump (flow rate ~ [3] L/min) |
+| Relay Module         | Switches power to the water pump under ESP32 control.                      | 5V signal-controlled relay board                                     |
+| Water Pump           | Physically delivers water to the crop.                                      | 12V DC inline pump (flow rate ~ [3] L/min) |
 
 ## System Architecture
 
@@ -29,7 +29,7 @@ This smart irrigation system employs a distributed architecture with two primary
 5.  **Edge AI Model Inference:** The core of the intelligent control lies in the Multi-Layer Perceptron (MLP) model hosted on the Raspberry Pi Pico W. This model analyzes the processed soil moisture data and the fetched weather information to predict the optimal irrigation needs for the specific crop. The model takes into account factors like the crop coefficient ($K_c$) to estimate the Crop Evapotranspiration (ETc).
 6.  **Irrigation Decision and Command Generation:** Based on the AI model's prediction, the Pico W determines whether irrigation is required and calculates the necessary duration. It then publishes control commands (e.g., "pump/on", "pump/off") as MQTT messages to another designated topic on the HiveMQ broker.
 7.  **Edge Device Control of Actuator:** The ESP32 subscribes to the MQTT topic for pump control commands. Upon receiving a command, the ESP32 activates or deactivates the relay module connected to the water pump via its digital output pins.
-8.  **Water Delivery:** The relay module, acting as an electronic switch, controls the power supply to the 12V water pump, thus delivering water to the crops as instructed by the Pico W.
+8.  **Water Delivery:** The relay module, acting as an electronic switch, controls the power supply to the 12V water pump, thus delivering water to the crops as instructed by the either Pico W or manual control by AR app or node red dashboard.
 
 **Component Interaction:**
 
