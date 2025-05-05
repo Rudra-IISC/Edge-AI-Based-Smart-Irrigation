@@ -12,11 +12,42 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 | ESP32                | Receives MQTT commands from Pico; drives the pump relay for irrigation.      | Dual-core 240MHz MCU with Wi-Fi/Bluetooth                                    |
 | Soil Moisture Sensor (Analog) | Measures volumetric water content (VWC); provides real-time soil moisture input. | Analog output providing VWC readings                                         |
 | Relay Module         | Switches power to the water pump under ESP32 control.                      | 5V or 12V signal-controlled relay board                                     |
-| Water Pump           | Physically delivers water to the crop.                                      | 12V DC submersible or inline pump (flow rate ~ [Your Pump's Flow Rate] L/min) |
+| Water Pump           | Physically delivers water to the crop.                                      | 12V DC submersible or inline pump (flow rate ~ [3] L/min) |
 
 ## System Architecture
 
 ![System architecture diagram](Data/Schematic_Smart_Irrigation_2025-05-04.png)
+
+This smart irrigation system employs a distributed architecture with two primary processing units: the Raspberry Pi Pico W (Edge Gateway) and the ESP32 (Edge Device). These units communicate wirelessly via the MQTT protocol, leveraging a centralized broker (HiveMQ) for message exchange.
+
+**Data Flow:**
+
+1.  **Sensor Data Acquisition:** Analog soil moisture sensors continuously measure the volumetric water content (VWC) in the soil.
+2.  **Edge Device Reading and Transmission:** The ESP32 microcontroller reads the analog signals from the soil moisture sensors through its Analog-to-Digital Converter (ADC) pins. These raw sensor readings are then published as MQTT messages to a designated topic on the HiveMQ broker.
+3.  **Edge Gateway Reception and Processing:** The Raspberry Pi Pico W subscribes to the MQTT topic where the ESP32 publishes sensor data. Upon receiving a new message, the Pico W processes the soil moisture data.
+4.  **Weather Data Integration:** The Pico W also connects to the OpenWeatherMap API over the internet to fetch relevant weather data, such as temperature, humidity, and precipitation, which are crucial for evapotranspiration calculations.
+5.  **Edge AI Model Inference:** The core of the intelligent control lies in the Multi-Layer Perceptron (MLP) model hosted on the Raspberry Pi Pico W. This model analyzes the processed soil moisture data and the fetched weather information to predict the optimal irrigation needs for the specific crop. The model takes into account factors like the crop coefficient ($K_c$) to estimate the Crop Evapotranspiration (ETc).
+6.  **Irrigation Decision and Command Generation:** Based on the AI model's prediction, the Pico W determines whether irrigation is required and calculates the necessary duration. It then publishes control commands (e.g., "pump/on", "pump/off") as MQTT messages to another designated topic on the HiveMQ broker.
+7.  **Edge Device Control of Actuator:** The ESP32 subscribes to the MQTT topic for pump control commands. Upon receiving a command, the ESP32 activates or deactivates the relay module connected to the water pump via its digital output pins.
+8.  **Water Delivery:** The relay module, acting as an electronic switch, controls the power supply to the 12V water pump, thus delivering water to the crops as instructed by the Pico W.
+
+**Component Interaction:**
+
+* **Raspberry Pi Pico W (Edge Gateway):** Acts as the central processing unit for intelligent decision-making. It hosts the AI model, handles data processing from sensors and weather APIs, and issues control commands. Its integrated Wi-Fi enables seamless MQTT communication.
+* **ESP32 (Edge Device):** Functions as the interface between the physical sensors and the actuator (water pump). It reads sensor data and acts upon the commands received from the Pico W via MQTT to control the relay. Its dual-core architecture and Wi-Fi/Bluetooth capabilities make it suitable for real-time data acquisition and communication.
+* **MQTT Broker (HiveMQ):** Serves as a central hub for message exchange between the Pico W and the ESP32. This decoupled communication allows for a more robust and scalable system.
+* **Soil Moisture Sensors:** Provide real-time analog data about the soil's water content, which is crucial input for the AI model.
+* **Relay Module:** An electrically operated switch that allows the low-power ESP32 to control the high-power water pump.
+* **Water Pump:** The physical actuator responsible for delivering water to the plants.
+
+**Network Topology:**
+
+Both the Raspberry Pi Pico W and the ESP32 connect to a local Wi-Fi network. They communicate with each other indirectly through the external HiveMQ MQTT broker, requiring internet connectivity for both devices.
+
+**Power Considerations:**
+
+The Raspberry Pi Pico W and the ESP32 are powered by power banks for portability. The water pump utilizes a separate 12V battery to provide the necessary power for operation.
+This layered architecture allows for efficient data processing at the edge, reducing latency and reliance on constant cloud connectivity for core irrigation control. The use of MQTT facilitates reliable and flexible communication between the key components of the smart irrigation system.
 
 ## Hardware Setup
 
