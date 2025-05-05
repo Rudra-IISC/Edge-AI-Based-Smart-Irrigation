@@ -20,9 +20,9 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 
 ![System architecture diagram](Data/Schematic_Smart_Irrigation_2025-05-04.png)
 
-## Setup and Installation
-
+## Hardware Setup
 [Provide detailed instructions on how to set up the hardware and software]
+![Hardware Setup Diagram](Data/Hardware Setup.png)
 
 ## Usage
 
