@@ -22,6 +22,8 @@ This smart irrigation system employs a distributed architecture with two primary
 
 **Data Flow:**
 
+![Flow Chart of System](Data/Flowchart_1.svg)
+
 1.  **Sensor Data Acquisition:** Analog soil moisture sensors continuously measure the volumetric water content (VWC) in the soil.
 2.  **Edge Device Reading and Transmission:** The ESP32 microcontroller reads the analog signals from the soil moisture sensors through its Analog-to-Digital Converter (ADC) pins. These raw sensor readings are then published as MQTT messages to a designated topic on the HiveMQ broker.
 3.  **Edge Gateway Reception and Processing:** The Raspberry Pi Pico W subscribes to the MQTT topic where the ESP32 publishes sensor data. Upon receiving a new message, the Pico W processes the soil moisture data.
