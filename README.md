@@ -2,9 +2,7 @@
 
 ## Overview
 
-This project implements an intelligent irrigation system leveraging edge AI to optimize water usage for [mention your target application, e.g., small farms, home gardens, seedling trays]. It utilizes a Raspberry Pi Pico W to host a machine learning model that analyzes soil moisture data from analog sensors and determines the precise irrigation needs. An ESP32 acts as a communication and control unit, receiving commands from the Pico via MQTT to activate a water pump through a relay module.
-
-![Smart Irrigation System GUI](Data/Smart Irrigation System GUI.png)
+This project implements an intelligent irrigation system leveraging edge AI to optimize water usage for small farms, home gardens, seedling trays. It utilizes a Raspberry Pi Pico W to host a machine learning model that analyzes soil moisture data from analog sensors and determines the precise irrigation needs. An ESP32 acts as a communication and control unit, receiving commands from the Pico via MQTT to activate a water pump through a relay module.
 
 ## Components and Specifications
 
@@ -23,8 +21,6 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 ## Hardware Setup
 
 This section provides details on how to set up the hardware components of the smart irrigation system.
-
-![Hardware Setup Diagram](Data/Hardware Setup.png)
 
 **Wiring and Connections:**
 
@@ -91,9 +87,8 @@ Ensure all components are powered correctly and the software is running as expec
 
 ## Code Structure
 
-[Provide a brief overview of the code organization, e.g., folders for ESP32 firmware, Pico code, AI models, utility scripts.]
+[A brief overview of the code organization]
 
-## Software Stack
 
 | Tool/Language        | Platform      | Role/Use                                                                                                | Key Libraries/Frameworks                 |
 |----------------------|---------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -120,6 +115,7 @@ The folder contains:
 * [Add any other key files]
 
 Further development of the AR application could include interactive controls and user customization of visualizations.
+
 ## Conclusion
 
 This project demonstrates a complete Edge AI solution for precision irrigation in nursery crops. By leveraging long-term climate data and an on-device MLP model, the system accurately predicts crop water needs (ETc) in real-time. The integration of crop coefficients (e.g., onion $K_c$) and soil moisture feedback ensures that watering is neither excessive nor insufficient at any stage. In trials, the Pico W's MLP inference achieved approximately 97% accuracy ($R^2 \approx 0.97$) against FAO-56 benchmarks, validating the approach. The edge deployment (MLP code in MicroPython) is lightweight and runs without cloud dependency. Hardware such as the ESP32 pump controller and moisture sensors have been successfully combined with the AI model into a functional prototype.
