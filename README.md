@@ -141,7 +141,19 @@ Ensure all components are powered correctly and the software is running as expec
 ## Augmented Reality Based Smart Irrigation
 
 This project incorporates an augmented reality (AR) application to enhance user interaction and understanding. The AR app allows users to visualize sensor data overlaid on the physical system, get real-time moisture readings, control the water pump, and access system status and alerts.
-![AR App Menu](Data/AR_App_Menu.png) ![AR Weather Data](Data/AR_App_Weather.png) ![AR Soil Moisture](Data/AR_Moisture.png)
+<table style="width:100%">
+  <tr>
+    <td style="width:33%; text-align:center;">
+      <img src="Data/AR_App_Menu.png" alt="AR App Menu" style="max-width:80%; height:auto;">
+    </td>
+    <td style="width:33%; text-align:center;">
+      <img src="Data/AR_App_Weather.png" alt="AR Weather Data" style="max-width:80%; height:auto;">
+    </td>
+    <td style="width:33%; text-align:center;">
+      <img src="Data/AR_Moisture.png" alt="AR Soil Moisture" style="max-width:80%; height:auto;">
+    </td>
+  </tr>
+</table>
 
 
 You can access the files and resources for the AR application in the following Google Drive folder:
