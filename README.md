@@ -12,16 +12,16 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 | ESP32                | Receives MQTT commands from Pico; drives the pump relay for irrigation.      | Dual-core 240MHz MCU with Wi-Fi/Bluetooth                                    |
 | Soil Moisture Sensor (Analog) | Measures volumetric water content (VWC); provides real-time soil moisture input. | Analog output providing VWC readings                                         |
 | Relay Module         | Switches power to the water pump under ESP32 control.                      | 5V signal-controlled relay board                                     |
-| Water Pump           | Physically delivers water to the crop.                                      | 12V DC inline pump (flow rate ~ [3] L/min) |
+| Water Pump           | Physically delivers water to the crop.                                      | 12V DC inline pump (flow rate ~ 3 L/min) |
 
 ## System Architecture
+This smart irrigation system employs a distributed architecture with two primary processing units: the Raspberry Pi Pico W (Edge Gateway) and the ESP32 (Edge Device). These units communicate wirelessly via the MQTT protocol, leveraging a centralized broker (HiveMQ) for message exchange.
 
 ![System architecture diagram](Data/Schematic_Smart_Irrigation_2025-05-04.png)
 
-This smart irrigation system employs a distributed architecture with two primary processing units: the Raspberry Pi Pico W (Edge Gateway) and the ESP32 (Edge Device). These units communicate wirelessly via the MQTT protocol, leveraging a centralized broker (HiveMQ) for message exchange.
 
 **Data Flow:**
-
+This section provides details on data flow of the smart irrigation system.
 ![Flow Chart of System](Data/Flowchart_1.svg)
 
 1.  **Sensor Data Acquisition:** Analog soil moisture sensors continuously measure the volumetric water content (VWC) in the soil.
@@ -181,7 +181,7 @@ Furthermore, an accompanying **Augmented Reality (AR) application** provides an 
 ## Team Members
 
 * Maharudra, DM, [maharudrar@iisc.ac.in](mailto:maharudrar@iisc.ac.in)
-    * Contributions: Hardware Integration, Connection of Edge device and Edge Gateway with MQTT, Pump Control : Node Red Dashboard and Flow (Local) , and Augmented Reality App Deployment (Remote).
+    * Contributions: Hardware Integration, Communications setup of Edge device (ESP 32) and Edge Gateway (Pico) with HiveMQ MQTT, Node Red Dashboard, Augmented Reality App Deployment.
 * Nikhil N S, DM, [nikhilns@iisc.ac.in](mailto:nikhilns@iisc.ac.in)
     * Contributions: Literature and previous innovation study. Data collection data processing objective and domin information gathering collection.
 * Surya Tomar, DM, [suryatomar@iisc.ac.in](mailto:suryatomar@iisc.ac.in)
@@ -202,18 +202,12 @@ We welcome contributions to the Edge AI-Based Smart Irrigation System project! I
 
 * **Code Style:** Please try to adhere to the existing code style used in the project. For MicroPython and Python, follow PEP 8 conventions where applicable.
 * **Documentation:** Keep documentation up-to-date with your changes. If you add new features or modify existing ones, update the relevant comments, docstrings, and the `README.md` file if necessary.
-* **Testing:** Contributions that include tests are highly encouraged. Well-tested code is more likely to be merged.
-* **Communication:** If you have questions or want to discuss potential contributions, please feel free to open an issue in the repository.
 * **Respectful Communication:** Please be respectful and considerate of other contributors in all discussions and interactions.
 
 ### Types of Contributions We Welcome
 
-* **Bug Fixes:** Identifying and fixing bugs in the existing code.
 * **New Features:** Implementing new functionalities, such as support for additional sensors, integration with other platforms, or improvements to the AI model.
-* **Documentation Improvements:** Enhancing the clarity, accuracy, and completeness of the project's documentation.
-* **Code Refactoring:** Improving the structure, readability, and efficiency of the code.
 * **Testing:** Writing unit, integration, or end-to-end tests.
-* **Examples and Tutorials:** Creating examples or tutorials that demonstrate how to use the system or its components.
 * **AR App Enhancements:** Contributing to the development and features of the Augmented Reality application.
 
 We appreciate your interest in contributing to this project and look forward to your valuable contributions!
