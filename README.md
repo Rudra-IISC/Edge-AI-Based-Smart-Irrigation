@@ -198,12 +198,6 @@ We welcome contributions to the Edge AI-Based Smart Irrigation System project! I
 
 2.  **Create a Branch:** Before making any changes, create a new branch from the `main` branch. Choose a descriptive name for your branch that indicates the feature or fix you're working on (e.g., `feature/new-sensor-integration`, `bugfix/mqtt-connection-issue`).
 
-### Contribution Guidelines
-
-* **Code Style:** Please try to adhere to the existing code style used in the project. For MicroPython and Python, follow PEP 8 conventions where applicable.
-* **Documentation:** Keep documentation up-to-date with your changes. If you add new features or modify existing ones, update the relevant comments, docstrings, and the `README.md` file if necessary.
-* **Respectful Communication:** Please be respectful and considerate of other contributors in all discussions and interactions.
-
 ### Types of Contributions We Welcome
 
 * **New Features:** Implementing new functionalities, such as support for additional sensors, integration with other platforms, or improvements to the AI model.
