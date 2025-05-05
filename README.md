@@ -6,13 +6,13 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 
 ## Components and Specifications
 
-| Component             | Role/Use                                                                             | Specifications                                                        |
-|----------------------|--------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| Raspberry Pi Pico W   | Hosts the MLP model and decision logic; reads sensors; computes irrigation volume.    | RP2040 dual-core 133MHz MCU, 264 KB RAM, Integrated Wi-Fi module       |
-| ESP32                | Receives MQTT commands from Pico; drives the pump relay for irrigation.              | Dual-core 240MHz MCU with Wi-Fi/Bluetooth                             |
-| Soil Moisture Sensor (Analog) | Measures volumetric water content (VWC); provides real-time soil moisture input. | Analog output providing VWC readings                                   |
-| Relay Module         | Switches power to the water pump under ESP32 control.                               | 5V or 12V signal-controlled relay board                               |
-| Water Pump           | Physically delivers water to the crop.                                               | 12V DC submersible or inline pump (flow rate ~ [Your Pump's Flow Rate] L/min) |
+| Component             | Role/Use                                                                    | Specifications                                                                 |
+|----------------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| Raspberry Pi Pico W  | Hosts the MLP model and decision logic; reads sensors; computes irrigation volume. | RP2040 dual-core 133MHz MCU, 264 KB RAM, Integrated Wi-Fi module             |
+| ESP32                | Receives MQTT commands from Pico; drives the pump relay for irrigation.      | Dual-core 240MHz MCU with Wi-Fi/Bluetooth                                    |
+| Soil Moisture Sensor (Analog) | Measures volumetric water content (VWC); provides real-time soil moisture input. | Analog output providing VWC readings                                         |
+| Relay Module         | Switches power to the water pump under ESP32 control.                      | 5V or 12V signal-controlled relay board                                     |
+| Water Pump           | Physically delivers water to the crop.                                      | 12V DC submersible or inline pump (flow rate ~ [Your Pump's Flow Rate] L/min) |
 
 ## System Architecture
 
@@ -21,6 +21,8 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 ## Hardware Setup
 
 This section provides details on how to set up the hardware components of the smart irrigation system.
+
+![Harware_setup](Data/Hardware_Setup.png)
 
 **Wiring and Connections:**
 
@@ -40,7 +42,7 @@ This section provides details on how to set up the hardware components of the sm
     * **MQTT Communication:** The Raspberry Pi Pico W connects to your Wi-Fi network and communicates with the HiveMQ MQTT broker over this connection to receive sensor data and send control commands.
 
 3.  **Water Pump and Power:**
-    * The 12V water pump is connected to the normally open (NO) or normally closed (NC) terminals of one of the channels on the 2-channel relay module.
+    * The 12V water pump is connected to the normally open (NO) or normally closed (NC) terminals of one of the channels on the 2-channel relay module.   ![Water Pump](Data/water_pump.png)
     * A separate 12V battery is used to power the water pump. Connect the positive and negative terminals of the 12V battery to the common (COM) and the appropriate switching terminal (NO or NC) of the relay channel that controls the pump.
 
 **Network and Communication:**
@@ -71,17 +73,23 @@ The water pump can be controlled through three different interfaces:
     * Access the Node-RED dashboard that you have configured for this project.
     * On the dashboard, you will find controls (e.g., buttons or switches) to manually turn the water pump ON and OFF.
     * Use these controls as needed for manual irrigation.
+  
+![Node Red Flow](Data/Flow_Node.png)
 
 2.  **Manual On/Off by AR App:**
     * Launch the Augmented Reality (AR) application on your mobile device.
     * Navigate to the pump control interface within the AR app.
     * The app will provide buttons or interactive elements that allow you to manually turn the water pump ON and OFF by interacting with the augmented view of your system.
+  
+      ![AR Pump Control](Data/AR_Pump_Control.png)
 
 3.  **Automatic Control by Edge AI Model:**
     * The system will automatically control the water pump based on the predictions of the Edge AI-based irrigation model running on the Raspberry Pi Pico W.
-    * The model takes into account real-time soil moisture levels from the sensors and relevant weather data (either historical averages embedded in the model or potentially real-time data fetched if you've implemented that).
+    * The model takes into account real-time soil moisture levels from the sensors and relevant weather data.
     * Based on the predicted crop water needs (ETc) and the current soil moisture, the Pico W will send MQTT commands to the ESP32 to turn the pump ON or OFF for a calculated duration to maintain optimal soil moisture levels.
     * The system operates autonomously once the initial setup is complete and the automatic mode is active.
+  
+   ![Node Red Dashboard 2](Data/Node_red_GUI.png)
 
 Ensure all components are powered correctly and the software is running as expected for each control interface to function properly. Monitor the system's behavior during initial testing to verify the correct operation of the sensors, pump control, and the AI-driven automation.
 
@@ -90,18 +98,22 @@ Ensure all components are powered correctly and the software is running as expec
 [A brief overview of the code organization]
 
 
-| Tool/Language        | Platform      | Role/Use                                                                                                | Key Libraries/Frameworks                 |
-|----------------------|---------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| Python               | PC            | Data handling, model development, training, export/deployment.                                        | pandas, numpy, scikit-learn, Jupyter   |
-| MicroPython          | Pico W        | Edge inference, control logic, sensor interaction, communication.                                      | Pico W (built-in), Thonny, umqtt.simple |
-| ESP32 Firmware       | ESP32         | MQTT-driven pump control based on commands from Pico.                                                 | umqtt.simple                           |
-| Thonny               | PC            | Flashing MicroPython firmware onto Pico W.                                                              | (IDE functionality)                    |
-| umqtt.simple         | Pico W / ESP32 | Lightweight MQTT client for communication.                                                              | (MicroPython library)                  |
-| Jupyter Notebooks/Script | PC            | Development/execution of Python code for data processing, model training, deployment.                  | Jupyter, Python scripts                |
+| Tool/Language        | Platform    | Role/Use                                                                                                  | Key Libraries/Frameworks             |
+|----------------------|-------------|-----------------------------------------------------------------------------------------------------------|--------------------------------------|
+| Python               | PC          | Data handling, model development, training, export/deployment.                                            | pandas, numpy, scikit-learn, Jupyter |
+| MicroPython          | Pico W      | Edge inference, control logic, sensor interaction, communication.                                        | Pico W (built-in), Thonny, umqtt.simple |
+| ESP32 Firmware       | ESP32       | MQTT-driven pump control based on commands from Pico.                                                     | umqtt.simple                         |
+| Thonny               | PC          | Flashing MicroPython firmware onto Pico W.                                                                | (IDE functionality)                  |
+| umqtt.simple         | Pico W / ESP32 | Lightweight MQTT client for communication.                                                              | (MicroPython library)                |
+| Jupyter Notebooks/Script | PC          | Development/execution of Python code for data processing, model training, deployment.                   | Jupyter, Python scripts              |
 
 ## Augmented Reality Based Smart Irrigation
 
 This project incorporates an augmented reality (AR) application to enhance user interaction and understanding. The AR app allows users to visualize sensor data overlaid on the physical system, get real-time moisture readings, control the water pump, and access system status and alerts.
+![AR App Menu](Data/AR_App_Menu.png)
+![AR Weather Data](Data/AR_App_Weather.png)
+![AR Soil Moisture](Data/AR_Moisture.png)
+
 
 You can access the files and resources for the AR application in the following Google Drive folder:
 
@@ -112,7 +124,6 @@ The folder contains:
 * AR app APK (for Android)
 * Unity AR App Source
 * Documentation
-* [Add any other key files]
 
 Further development of the AR application could include interactive controls and user customization of visualizations.
 
@@ -156,5 +167,3 @@ We appreciate your interest in contributing to this project and look forward to 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
