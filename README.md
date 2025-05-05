@@ -3,7 +3,9 @@
 ## Overview
 
 This project implements an intelligent irrigation system leveraging edge AI to optimize water usage for [mention your target application, e.g., small farms, home gardens, seedling trays]. It utilizes a Raspberry Pi Pico W to host a machine learning model that analyzes soil moisture data from analog sensors and determines the precise irrigation needs. An ESP32 acts as a communication and control unit, receiving commands from the Pico via MQTT to activate a water pump through a relay module.
-![Smart Irrigation System GUI](Data/Smart Irrigation System GUI.png)
+
+![Smart Irrigation System GUI](Data/Smart Irrigation System GUI.jpeg)
+
 ## Components and Specifications
 
 | Component               | Role/Use                                                                                               | Specifications                                                                 |
