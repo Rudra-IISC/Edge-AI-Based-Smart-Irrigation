@@ -14,9 +14,9 @@ This project implements an intelligent irrigation system leveraging edge AI to o
 | Relay Module            | Switches power to the water pump under ESP32 control.                                                  | 5V or 12V signal-controlled relay board                                       |
 | Water Pump              | Physically delivers water to the crop (through tubing, emitters, etc.).                                | 12V DC submersible or inline pump (flow rate ~ [Your Pump's Flow Rate] L/min) |
 
-## System Architecture (Optional - Add a diagram here if you have one)
+## System Architecture
 
-![System architecture diagram](main/data/Schematic_Smart_Irrigation_2025-05-04.png)
+![System architecture diagram](Data/Schematic_Smart_Irrigation_2025-05-04.png)
 
 ## Setup and Installation
 
