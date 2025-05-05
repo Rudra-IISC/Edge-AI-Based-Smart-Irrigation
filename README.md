@@ -52,22 +52,6 @@ This section provides details on how to set up the hardware components of the sm
 * Both the ESP32 and the Raspberry Pi Pico W connect to your local Wi-Fi network.
 * They use the HiveMQ MQTT broker for communication. The Pico W will likely publish sensor data and potentially send commands, while the ESP32 will subscribe to commands to control the relay and thus the water pump.
 
-**Important Notes:**
-
-* Always refer to the datasheets of your specific components for accurate pin assignments and voltage requirements.
-* Ensure that the power ratings of your power banks and the 12V battery are sufficient for the connected devices.
-* Double-check all wiring connections before powering on the system to avoid damage to the components.
-
-**Network and Communication:**
-
-* Both the ESP32 and the Raspberry Pi Pico W connect to your local Wi-Fi network.
-* They use the HiveMQ MQTT broker for communication. The Pico W will likely publish sensor data and potentially send commands, while the ESP32 will subscribe to commands to control the relay and thus the water pump.
-
-**Important Notes:**
-
-* Always refer to the datasheets of your specific components for accurate pin assignments and voltage requirements.
-* Ensure that the power ratings of your power banks and the 12V battery are sufficient for the connected devices.
-* Double-check all wiring connections before powering on the system to avoid damage to the components.
 
 ## Usage
 
