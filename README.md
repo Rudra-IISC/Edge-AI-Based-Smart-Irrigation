@@ -29,18 +29,34 @@ This section provides details on how to set up the hardware components of the sm
 **Wiring and Connections:**
 
 1.  **Edge Device (ESP32):**
-    * The ESP32 edge device is powered by a power bank.
-    * **Soil Moisture Sensor Connection:** Connect the analog output pin of the soil moisture sensor to one of the analog input pins (ADC) of the ESP32. Connect the sensor's VCC and GND to the ESP32's power and ground pins.
-    * **Relay Module Connection:** Connect the control input pin(s) of the 2-channel relay module to digital output pins of the ESP32. Also, connect the relay module's VCC and GND to the ESP32's power and ground (or a separate 5V supply)
-    * **MQTT Communication:** The ESP32 connects to Wi-Fi network and communicates with the HiveMQ MQTT broker over this connection.
+    * The ESP32 edge device is powered by a power bank. Ensure the power bank is adequately charged.
+    * **Soil Moisture Sensor Connection:** Connect the analog output pin of the soil moisture sensor to one of the analog input pins (ADC) of the ESP32. Refer to the datasheet of your specific soil moisture sensor and ESP32 for the correct pin assignments. You will likely also need to connect the sensor's VCC and GND to the ESP32's power and ground pins.
+    * **Relay Module Connection:** Connect the control input pin(s) of the 2-channel relay module to digital output pins of the ESP32. The number of control pins you use will depend on whether you are controlling one or both channels of the relay. Also, connect the relay module's VCC and GND to the ESP32's power and ground (or a separate 5V supply if required by the relay module).
+    * **MQTT Communication:** The ESP32 connects to your Wi-Fi network and communicates with the HiveMQ MQTT broker over this connection.
 
 2.  **Edge Gateway (Raspberry Pi Pico W):**
     * The Raspberry Pi Pico W edge gateway is powered by a power bank. Ensure the power bank is adequately charged.
-    * **Data Processing and Control:** The Pico W receives real-time soil moisture data from the ESP32 over the MQTT connection. It also fetches weather data from an external API (you might want to specify which API or type of weather data if relevant). The Pico W then processes this data using the Edge AI-based smart irrigation prediction model to calculate the ET0 (Reference Evapotranspiration) and ETc (Crop Evapotranspiration) for the specific crop (e.g., based on the provided $K_c$ value). Based on these calculations and the current soil moisture level, the Pico W determines the necessary irrigation and sends pump ON/OFF commands to the ESP32 over the MQTT connection.
-    * **MQTT Communication:** The Raspberry Pi Pico W connects to your Wi-Fi network and communicates with the HiveMQ MQTT broker over this connection to receive sensor data and send pump control commands.
+    * **Data Processing and Control:** The Pico W receives real-time soil moisture data from the ESP32 over the MQTT connection. It also fetches weather data from the [OpenWeatherMap API](https://openweathermap.org/api).
+        * **API Base URL:** The base URL for the OpenWeatherMap API is `https://api.openweathermap.org/data/2.5/`. You will need to append specific endpoints to this URL to retrieve the desired weather data (e.g., current weather, forecasts).
+        * **API Key:** To use the OpenWeatherMap API, you need an API key. You can obtain a free API key by signing up on the [OpenWeatherMap website](https://openweathermap.org/). This key must be included in your API requests.
+        * **Data Format:** The OpenWeatherMap API primarily returns data in JSON format, which is easily parsed by most programming languages.
+    * The Pico W then processes this data using the Edge AI-based smart irrigation prediction model to calculate the ET0 (Reference Evapotranspiration) and ETc (Crop Evapotranspiration) for the specific crop (e.g., based on the provided $K_c$ value). Based on these calculations and the current soil moisture level, the Pico W determines the necessary irrigation and sends pump ON/OFF commands to the ESP32 over the MQTT connection.
+    * **MQTT Communication:** The Raspberry Pi Pico W connects to your Wi-Fi network and communicates with the HiveMQ MQTT broker over this connection to receive sensor data and send control commands.
+
 3.  **Water Pump and Power:**
     * The 12V water pump is connected to the normally open (NO) or normally closed (NC) terminals of one of the channels on the 2-channel relay module.
     * A separate 12V battery is used to power the water pump. Connect the positive and negative terminals of the 12V battery to the common (COM) and the appropriate switching terminal (NO or NC) of the relay channel that controls the pump.
+
+**Network and Communication:**
+
+* Both the ESP32 and the Raspberry Pi Pico W connect to your local Wi-Fi network.
+* They use the HiveMQ MQTT broker for communication. The Pico W will likely publish sensor data and potentially send commands, while the ESP32 will subscribe to commands to control the relay and thus the water pump.
+
+**Important Notes:**
+
+* Always refer to the datasheets of your specific components for accurate pin assignments and voltage requirements.
+* Ensure that the power ratings of your power banks and the 12V battery are sufficient for the connected devices.
+* Double-check all wiring connections before powering on the system to avoid damage to the components.
 
 **Network and Communication:**
 
