@@ -1,6 +1,6 @@
 # Documentation
 
-This script, `MQTTManager, facilitates communication between a Unity application and an MQTT broker (specifically configured for HiveMQ in this case). It enables the Unity application to receive soil moisture data from an ESP32 device and to send commands to control a pump connected to the ESP32.
+This script, MQTTManager, facilitates communication between a Unity application and an MQTT broker (specifically configured for HiveMQ in this case). It enables the Unity application to receive soil moisture data from an ESP32 device and to send commands to control a pump connected to the ESP32.
 
 ## Overview
 
