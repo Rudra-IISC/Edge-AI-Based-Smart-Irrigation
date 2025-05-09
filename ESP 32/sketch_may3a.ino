@@ -7,10 +7,10 @@ const char* ssid = "Rudra_N";         // Your WiFi network name
 const char* password = "SonyA@1236"; // Your WiFi password
 
 // --- HiveMQ Cloud MQTT Credentials ---
-const char* mqtt_server = "b1ef2a417ef147adad7b7222eacb6052.s1.eu.hivemq.cloud"; // Your HiveMQ Cloud URL
+const char* mqtt_server = "Your HiveMQ Cloud URL"; // Your HiveMQ Cloud URL
 const int mqtt_port = 8883;                                                     // Secure MQTT port (TLS/SSL)
-const char* mqtt_user = "Rudra_123";                                           // Your HiveMQ Cloud username
-const char* mqtt_password = "RudrA@123";                                       // Your HiveMQ Cloud password
+const char* mqtt_user = "user";                                           // Your HiveMQ Cloud username
+const char* mqtt_password = "pwd";                                       // Your HiveMQ Cloud password
 const char* mqtt_topic_sensor = "esp32/soilMoisture";                          // Topic to publish sensor data to
 const char* mqtt_topic_relay_on = "Relay/on";                                  // Topic to publish when relay is ON
 const char* mqtt_topic_relay_off = "Relay/off";                                 // Topic to publish when relay is OFF
