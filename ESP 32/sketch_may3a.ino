@@ -3,8 +3,8 @@
 #include <PubSubClient.h>     // For MQTT communication
 
 // --- WiFi Credentials ---
-const char* ssid = "Rudra_N";         // Your WiFi network name
-const char* password = "SonyA@1236"; // Your WiFi password
+const char* ssid = "wifi";         // Your WiFi network name
+const char* password = "pwd"; // Your WiFi password
 
 // --- HiveMQ Cloud MQTT Credentials ---
 const char* mqtt_server = "Your HiveMQ Cloud URL"; // Your HiveMQ Cloud URL
