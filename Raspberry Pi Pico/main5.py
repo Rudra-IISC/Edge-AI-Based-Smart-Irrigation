@@ -91,10 +91,10 @@ def get_today_str():
 # -----------------------------------------------------------------------------
 # 4) MQTT CONFIGURATION (SOIL VWC & PUMP COMMAND)
 # -----------------------------------------------------------------------------
-MQTT_BROKER     = b"b1ef2a417ef147adad7b7222eacb6052.s1.eu.hivemq.cloud"
+MQTT_BROKER     = b"HIVEMQ"
 MQTT_PORT       = 8883
-MQTT_USER       = b"Rudra_123"
-MQTT_PASSWORD   = b"RudrA@123"
+MQTT_USER       = b"USER"
+MQTT_PASSWORD   = b"PWD"
 MQTT_CLIENT_ID  = b"pico_w_eto_predictor_v5" # Incremented version again
 TOPIC_SOIL_SUB  = b"esp32/soilMoisture"
 TOPIC_PUMP_CMD  = b"esp32/pump/control"
@@ -172,9 +172,9 @@ def publish_message(client, topic, message):
 # -----------------------------------------------------------------------------
 # 5) WIFI & WEATHER API CONFIG
 # -----------------------------------------------------------------------------
-WIFI_SSID   = 'Ss'      # replace if needed
-WIFI_PASS   = 'surya0123' # replace if needed
-OWM_API_KEY = 'e3c83dbd059965f25b4d7ddb8b31622d' # Replace with your key
+WIFI_SSID   = 'USER'      # replace if needed
+WIFI_PASS   = 'PWD' # replace if needed
+OWM_API_KEY = 'API KEY' # Replace with your key
 LAT, LON    = 13.0192526, 77.5630184           # Replace with your location
 OWM_URL     = (
     # Consider potential issues with http vs https if connectivity problems arise
