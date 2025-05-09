@@ -100,10 +100,10 @@ def ensure_log_header():
 # -----------------------------------------------------------------------------
 # 4) MQTT CONFIGURATION & STATE
 # -----------------------------------------------------------------------------
-MQTT_BROKER     = b"b1ef2a417ef147adad7b7222eacb6052.s1.eu.hivemq.cloud"
+MQTT_BROKER     = b"MQTT WEB"
 MQTT_PORT       = 8883
-MQTT_USER       = b"Rudra_123"
-MQTT_PASSWORD   = b"RudrA@123"
+MQTT_USER       = b"USER"
+MQTT_PASSWORD   = b"PWD"
 MQTT_CLIENT_ID  = b"pico_w_eto_predictor_v7_mqtt_log_only" # Unique ID
 
 # Topics
@@ -257,9 +257,9 @@ def wait_for_configuration(client_obj):
 # -----------------------------------------------------------------------------
 # 5) WIFI & WEATHER API CONFIG
 # -----------------------------------------------------------------------------
-WIFI_SSID   = 'Rudra_N'
-WIFI_PASS   = 'SonyA@1236'
-OWM_API_KEY = 'e3c83dbd059965f25b4d7ddb8b31622d'
+WIFI_SSID   = 'USER'
+WIFI_PASS   = 'PWD'
+OWM_API_KEY = 'API KEY'
 LAT, LON    = 13.0192526, 77.5630184
 OWM_URL     = (f"http://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={OWM_API_KEY}&units=metric")
 
