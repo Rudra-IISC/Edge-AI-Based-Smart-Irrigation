@@ -187,7 +187,6 @@ Furthermore, an accompanying **Augmented Reality (AR) application** provides an 
 * Surya Tomar, DM, [suryatomar@iisc.ac.in](mailto:suryatomar@iisc.ac.in)
     * Contributions: Real time data fetching via APIs , model development and model integration in edge devices and model deployment.
 
-
 ## Contributing
 
 We welcome contributions to the Edge AI-Based Smart Irrigation System project! If you're interested in helping out, please follow these guidelines:
